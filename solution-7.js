@@ -8,11 +8,15 @@ function mergeArrays(arr1, arr2) {
     let secondPointer = 0;
     while (firstPointer < arr1.length || secondPointer < arr2.length) {
         if (firstPointer >= arr1.length) {
-            result.push(...arr2.slice(secondPointer));
+            for (let i = secondPointer; i < arr2.length; i++) {
+                result.push(arr2[i]);
+            }
             break;
         }
         if (secondPointer >= arr2.length) {
-            result.push(...arr1.slice(firstPointer));
+            for (let i = firstPointer; i < arr1.length; i++) {
+                result.push(arr1[i]);
+            }
             break;
         }
         if (arr1[firstPointer] > arr2[secondPointer]) {
