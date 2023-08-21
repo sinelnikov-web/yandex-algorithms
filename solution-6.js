@@ -14,13 +14,10 @@ function checkBrackets(str) {
         const value = current.value;
         if (closePairs.has(value)) {
             let stackHead = stack.pop();
-            while (!openBrackets.has(stackHead)) {
-                stackHead = stack.pop();
-            }
             if (closePairs.get(value) !== stackHead) {
                 return false;
             }
-        } else {
+        } else if (openBrackets.has(value)) {
             stack.push(value);
         }
         current = tokensIter.next();
@@ -28,4 +25,4 @@ function checkBrackets(str) {
     return stack.length === 0;
 }
 
-console.log(checkBrackets("(foo[0][0[0]])"))
+console.log(checkBrackets("(foo[0][00])"))
